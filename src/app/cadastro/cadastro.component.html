@@ -17,23 +17,19 @@
         ngModel
         required
         minlength="2"
+        #nome="ngModel"
       />
-      <div
-        *ngIf="
-          (f.controls['nome']?.invalid && f.controls['nome']?.touched) ||
-          f.controls['nome']?.dirty
-        "
-      >
-        <span
-          class="erro__texto"
-          *ngIf="f.controls['nome']?.errors?.['required']"
-          >O campo de nome deve ser preenchido</span
+      <div *ngIf="(nome?.invalid && nome?.touched) || nome?.dirty">
+        <app-mensagem
+          *ngIf="nome?.errors?.['required'] mensagem"
+          mensagem="O campo de nome deve ser preenchido"
         >
-        <span
-          class="erro__texto"
-          *ngIf="f.controls['nome']?.errors?.['minlength']"
-          >O nome deve ter no mínimo dois caracteres</span
+        </app-mensagem>
+        <app-mensagem
+          *ngIf="nome?.errors?.['minlength'] mensagem"
+          mensagem="O nome deve ter no mínimo dois caracteres"
         >
+        </app-mensagem>
       </div>
     </div>
     <div class="formulario__dupla">
@@ -71,26 +67,21 @@
         ngModel
         required
         email
+        #email="ngModel"
       />
 
-      <div
-        *ngIf="
-          (f.controls['email']?.invalid && f.controls['email']?.touched) ||
-          f.controls['email']?.dirty
-        "
-      >
-        <span
-          class="erro__texto"
-          *ngIf="f.controls['email']?.errors?.['required']"
-          >O campo de email deve ser preenchido</span
+      <div *ngIf="(email?.invalid && email?.touched) || email?.dirty">
+        <app-mensagem
+          *ngIf="email?.errors?.['required']"
+          mensagem="O campo de email deve ser preenchido"
         >
-        <span
-          class="erro__texto"
-          *ngIf="f.controls['email']?.errors?.
-          ['email']"
-          >O campo de email deve seguir este padrão:
-          "exemplo&#64;dominio.com"</span
+        </app-mensagem>
+
+        <app-mensagem
+          *ngIf="email?.errors?.['email']"
+          mensagem="O campo de email deve seguir este padrão: exemplo&#64;dominio.com"
         >
+        </app-mensagem>
       </div>
     </div>
 
