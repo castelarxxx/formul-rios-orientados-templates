@@ -7,6 +7,7 @@ import { HttpClient } from "@angular/common/http";
 })
 export class ConsultaCepService {
   url_API = "https://viacep.com.br/ws/";
+  
   constructor(private http: HttpClient) {}
 
   getConsultaCep(cep: string) {
